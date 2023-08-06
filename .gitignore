@@ -1,0 +1,17 @@
+results
+target_imgs
+.vscode
+logs
+celeba_samples
+torch_utils
+sample_images
+*.yaml
+*.pt
+dnnlib
+notebooks
+logs*/
+samples/*
+reference_images/
+reals/
+*.dat
+*.bz2
