@@ -1,18 +1,21 @@
 # (ICCV 2023) Text-Driven Generative Domain Adaptation with Spectral Consistency Regularization
+<div align="center">
+  
+[![Paper](https://img.shields.io/badge/ICCV-2023-blue)](https://openaccess.thecvf.com/content/ICCV2023/papers/Liu_Text-Driven_Generative_Domain_Adaptation_with_Spectral_Consistency_Regularization_ICCV_2023_paper.pdf)
+
+</div>
 
 ![Intro](assets/intro.jpg)
 
 ![Structure](assets/structure.jpeg)
 
-- Paper: Coming Soon
 
 ## Setup
 
 ### Requirements
-```shell script
-conda install --yes -c pytorch pytorch=1.10.1 torchvision cudatoolkit=<CUDA_VERSION>
-pip install ftfy regex tqdm
-pip install git+https://github.com/openai/CLIP.git
+The project is managed with `uv`[https://github.com/astral-sh/uv], install uv first by:
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
 ### Download StyleGAN2 checkpoint
@@ -25,7 +28,7 @@ pip install git+https://github.com/openai/CLIP.git
 To convert a generator from one domain to another, run the training script in the ZSSGAN directory:
 
 ```
-python train.py size=1024  \
+uv run train.py size=1024  \
                 task=photo2sketch \
                 lambda_spectral=1 \
                 batch=2  \

@@ -1,0 +1,83 @@
+version: 1
+
+# Training configuration
+task: null  # MISSING field must be specified
+experiment: null
+seed: 3
+comment: ""
+exp_path: ""
+
+# Checkpoints
+frozen_gen_ckpt: ""
+train_gen_ckpt: ""
+output_dir: null  # MISSING field must be specified
+
+# Loss weights and configurations
+lambda_direction: 1.0
+direction_loss_type: "cosine"
+
+# Additional loss weights (unused in paper)
+lambda_patch: 0.0
+lambda_global: 0.0
+lambda_texture: 0.0
+lambda_manifold: 0.0
+lambda_relative: 0.0
+lambda_diversity: 0.0
+lambda_contrastive: 0.0
+lambda_ppl: 0.0
+lambda_pplc: 0.0
+lambda_kl: 0.0
+
+# Spectral loss configuration
+lambda_spectral: 0.0
+input_space: "w+"
+feature_space: "clip"
+spectral_loss_type: "nmse"
+spectral_reg_type: "trace"
+spectral_weight_type: "adaptive"
+power_iterations: 3
+lerp_weight: 0
+adaptive_weight: true
+reg_frequency: 1
+
+# Additional loss configurations
+relative_loss_type: "cosine"
+
+# Save and output intervals
+save_interval: 50
+output_interval: 100
+
+# Class configuration
+source_class: null  # MISSING field must be specified
+target_class: null  # MISSING field must be specified
+phase: "default"
+
+# Sampling and layer configurations
+sample_truncation: 0.7
+auto_layer_iters: 1
+auto_layer_k: 18
+auto_layer_batch: 8
+clip_models: 
+  - "ViT-B/32"
+clip_model_weights:
+  - 1.0
+
+# Output configurations
+num_grid_outputs: 1
+crop_for_cars: false
+
+# Image style configurations
+style_img_dir: null
+img2img_batch: 16
+target_img_list: null
+
+# Training parameters
+iter: 1000
+batch: 4
+n_sample: 8
+size: 1024
+mixing: 0.0
+ckpt: null
+lr: 0.002
+channel_multiplier: 2
+exp_name: null  # MISSING field must be specified

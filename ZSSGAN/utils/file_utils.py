@@ -33,7 +33,7 @@ def save_images(images: torch.Tensor, output_dir: str, file_prefix: str, nrows: 
         os.path.join(output_dir, f"{file_prefix}_{str(iteration).zfill(6)}.jpg"),
         nrow=nrows,
         normalize=True,
-        range=(-1, 1),
+        value_range=(-1, 1),
     )
 
 def save_torch_img(img: torch.Tensor, output_dir: str, file_name: str) -> None:

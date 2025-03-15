@@ -5,7 +5,6 @@ logs
 celeba_samples
 torch_utils
 sample_images
-*.yaml
 *.pt
 dnnlib
 notebooks
@@ -15,3 +14,4 @@ reference_images/
 reals/
 *.dat
 *.bz2
+**/outputs/*

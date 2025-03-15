@@ -155,10 +155,10 @@ class ZSSGAN(torch.nn.Module):
             print("using adaptive spectral reg")
             return torch.optim.Adam([
                         {"params": self.generator_trainable.parameters()},
-                        {"params": self.adaptive_weight, "lr": 1e-2, "betas": (0, 0.99)}], 
-                    lr=self.args.lr, betas=(0, 0.99))
+                        {"params": self.adaptive_weight, "lr": 1e-2, "betas": (0.0, 0.99)}], 
+                    lr=self.args.lr, betas=(0.0, 0.99))
         else:
-            return torch.optim.Adam(self.generator_trainable.parameters(), lr=self.args.lr, betas=(0, 0.99))
+            return torch.optim.Adam(self.generator_trainable.parameters(), lr=self.args.lr, betas=(0.0, 0.99))
 
     def set_img2img_direction(self):
         with torch.no_grad():

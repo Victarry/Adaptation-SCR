@@ -11,6 +11,7 @@ import torchvision.transforms as transforms
 from matplotlib.pyplot import text
 from PIL import Image
 from torch import nn
+from torch.nn.attention import SDPBackend, sdpa_kernel
 
 from ZSSGAN.options.train_options import TrainConfig
 from ZSSGAN.utils.text_templates import (imagenet_templates,
@@ -549,7 +550,8 @@ class CLIPLoss(torch.nn.Module):
             loss_dict["diversity_adaptive_weight"] = adaptive_weight
         
         if self.lambda_spectral > 0 and self.iter % self.reg_frequency == 0:
-            spectral_loss =  self.spectral_consistency_loss(src_img, target_img, source_latent, target_latent, loss_dict=loss_dict)
+            with sdpa_kernel(SDPBackend.MATH):
+                spectral_loss =  self.spectral_consistency_loss(src_img, target_img, source_latent, target_latent, loss_dict=loss_dict)
             if self.args.adaptive_weight:
                 adaptive_weight = self.calculate_adaptive_weight(direction_loss, spectral_loss, last_layer=generator.get_torgbs_weight())
             else:

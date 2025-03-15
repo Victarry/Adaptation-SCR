@@ -1,0 +1,28 @@
+[project]
+name = "adaptation-scr"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "torch==2.6.0",
+    "omegaconf",
+    "hydra-core",
+    "tqdm",
+    "numpy>=2.0.0",
+    "pandas",
+    "clip",
+    "gputil>=1.4.0",
+    "opencv-python>=4.11.0.86",
+    "tensorboard>=2.19.0",
+    "regex>=2024.11.6",
+    "matplotlib>=3.9.4",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu124"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true
+
+[tool.uv.sources]
+clip = { git = "https://github.com/openai/CLIP.git" }
